@@ -1,0 +1,19 @@
+# Write a Query to Filter  bank account where address containing lane or street and balance should be between 20000 to 30000
+GET bank/_search
+{
+  "query":  {
+    "bool":{
+      "must":{
+        "match": {"address":"lane street"}
+      },
+      "filter": {
+          "range": {
+            "balance": {
+              "gte":20000,
+              "lte":30000
+            }
+          }
+        }
+    }
+  }
+}
