@@ -1,0 +1,19 @@
+#Write a query to search for addresses that includes street and place but prioritise street over lane.
+GET bank/_search
+{
+  "query": {
+    "boosting": {
+      "positive": {
+        "term": {
+          "address": "street"
+        }
+      },
+      "negative": {
+        "term": {
+          "address": "place"
+        }
+      },
+      "negative_boost": 0.5
+    }
+  }
+}
