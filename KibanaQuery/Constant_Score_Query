@@ -1,0 +1,13 @@
+#COSNTANT_SCORE_QUERY
+#Write a query to search for addresses that include "church" and "lane". Make sure they have the same relevance
+GET bank/_search
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "term": { "address": "lane" }
+      },
+      "boost": 1.0
+    }
+  }
+}
